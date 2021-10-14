@@ -1,71 +1,37 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="http://mign.pl/img/logodjangorized.png" alt="Project logo"></a>
+ <img width=200px height=200px src="http://mign.pl/img/logostatix.png" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Djangorized</h3>
+<h3 align="center">Statix</h3>
 
 <div align="center">
 
-[![Stauts](https://img.shields.io/travis/coconutcake/djangorized)](https://travis-ci.org/github/coconutcake/djangorized)
-[![Requirements Status](https://requires.io/github/coconutcake/djangorized/requirements.svg?branch=main)](https://requires.io/github/coconutcake/djangorized/requirements/?branch=main)
+[![Stauts](https://img.shields.io/travis/coconutcake/statix)](https://travis-ci.org/github/coconutcake/statix)
+[![Requirements Status](https://requires.io/github/coconutcake/statix/requirements.svg?branch=main)](https://requires.io/github/coconutcake/statix/requirements/?branch=main)
 
 </div>
 
 ---
 
-<p align="center"> Zintegrowany projekt aplikacji django na kontenerach dockera
+<p align="center"> Zintegrowany projekt aplikacji django na kontenerach dockera do zarzadzania procesami routera Mikrotik poprzez wdrozenie konfiguratora webowego do obslugi ruchu sieciowego.
     <br> 
 </p>
 
 ## 📝 Zawartość
 - [O projekcie](#about)
-- [Założenia projektowe](#zalozenia)
-- [Technologia i metodyka](#tech)
+- [Konfiguracja](#config)
 - [Uruchomienie](#getting_started)
 - [API](#api)
 
 ## 🧐 O projekcie <a name = "about"></a>  
 
-Projekt aplikacji django na kontenerach dockera wraz z zintegrowana baza postgres oraz serwerem nginx
-
-## 📰 Założenia projektowe <a name = "zalozenia"></a>
-
-#### Konteneryzacja i usługi:
-1. Utworzenie spójnego modelu konteneryzacji z uwzględnieniem plików `Dockerfile` w osobnych folderach dla każdego kontenera.
-2. Utworzenie i skonfigurowanie bazy danych postgres na osobnym kontenerze dla aplikacji i testów
-3. Utworzenie kontenera dla serwera upstreamowego Nginx oraz wystawienie za jego pomoca dwuch serwerów - HTTP oraz HTTPS
-4. Dodatkowa konfiguracja serwera nginx - dodanie certyfikatów SSL oraz konfiguracja proxy-reverse
-5. Implementacja zmiennych środowiskowych w pliku `docker-compose.yml` za pomocą których, aplikacja oraz zależne od niej kontenery będą wstępnie prekonfigowalne na etapie developingu oraz wdrażania np. dla rozwiazania chmurowego
-6. Utworzenie modułu inicjującego dla aplikacji Django celem radzenia sobie z typowymi operacjami na pliku `manage.py`
-
-#### Aplikacja Django:
-1. Przekonfigurowanie modelu logowania za pomocą email i hasła
-2. Dostarczenie przeglądarki API
-
-
-## 🧑‍🔬Technologia i metodyka <a name = "tech"></a>
-
-#### Podział kontenerów Dockera:
-- Python 3.8 z django
-- Baza Postgres dla django
-- Adminer
-- Upstream server nginx
-
-#### Aplikacja:
-
-- Aplikacja wykonana wg metodyki TDD. 
-- Krycie testami na poziomie ~90% 
-- Projekt został zintegrowany z Travis CI -> https://travis-ci.org/github/coconutcake/djangorized
-- Wersje zależności requirements -> https://requires.io/github/coconutcake/djangorized/requirements/?branch=main
-- Projekt wykorzystuje konteneryzacje docker wraz composerem do uruchomienia środowisk tj: aplikacji django na pythonie 3.8, bazy danych postgresql, aplikacji adminer, oraz serwer upstream nginx
-- Model usera został przebudowany w celu umozliwienia logowania za pomocą email
-- W projekcie wykorzystano bibliteke wait-for-it w celu kolejkowania uruchamianych kontenerów
-- Folder ./initial miescie pliki inicjujace w tym ustawienia nginxa,aplikacji django
-- dostepna jest przegladarka API (Swagger)
+Aplikacja daje mozliwość obsługi ruchu sieciowego na urzadzeniach Mikrotik poprzez panel aplikacji webowej, w którym mozna zdefiniowac reguły i zdarzenia. Projekt oparty jest na bibliotece `Pyshark`. Dzięki takiemu rozwiazaniu mozna na żywo rejestrowac co sie dzieje w sieci i dokonywać momentalnych zmian. Można zastosować na mikrokomputerach z procesorem ARMowych tj. Raspberry PI.
 
 
 ## ⚙️ Konfiguracja <a name = "config"></a>
+
+#### 1. Konfiguracja stacku:
 
 Za pomocą `docker-compose.yml` możliwa jest konfiguracja stacku za pomocą zmiennych środowiskowych dla poszczególnych usług:
 
@@ -138,6 +104,9 @@ HTTPS_SERVER_PORT=5555
 SERVER_NAME=default_server_ip
 ```
 
+#### 2. Konfiguracja routera Mikrotik:
+
+
 
 
 
@@ -146,7 +115,7 @@ SERVER_NAME=default_server_ip
 
 Wykonaj klona jesli masz juz zainstalowanego dockera:
 ```
-git clone https://github.com/coconutcake/djangorized.git
+git clone https://github.com/coconutcake/statix.git
 ```
 
 Po pobraniu klona, przejdz do folderu i zbuduj obrazy poleceniem:
