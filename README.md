@@ -26,7 +26,7 @@
 
 ## 🧐 O projekcie <a name = "about"></a>  
 
-Aplikacja daje mozliwość obsługi ruchu sieciowego na urzadzeniach Mikrotik poprzez panel aplikacji webowej, w którym mozna zdefiniowac reguły i zdarzenia. Projekt oparty jest na bibliotece `Pyshark`. Dzięki takiemu rozwiazaniu mozna na żywo rejestrowac co sie dzieje w sieci i dokonywać momentalnych zmian. Można zastosować na mikrokomputerach z procesorem ARMowych tj. Raspberry PI.
+Aplikacja daje mozliwość obsługi ruchu sieciowego na urzadzeniach Mikrotik poprzez panel aplikacji webowej, w którym mozna zdefiniowac reguły i zdarzenia. Projekt oparty jest na bibliotece `Pyshark`. Dzięki takiemu rozwiazaniu mozna na żywo rejestrowac co sie dzieje w sieci i dokonywać momentalnych zmian. Można zastosować na mikrokomputerach z procesorem ARMowych tj. Raspberry PI. Do poprawnego działania wymagany jest `docker`. 
 
 
 ## ⚙️ Konfiguracja <a name = "config"></a>
@@ -106,6 +106,7 @@ SERVER_NAME=default_server_ip
 
 #### 2. Konfiguracja routera Mikrotik:
 
+Aby aplikacja mogla sie polaczyc z Mikrotikiem nalezy uruchomic stream na konkretnym porcie.
 
 
 
